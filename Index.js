@@ -5,10 +5,6 @@ const showMillioanireBtn = document.getElementById("showmillioanire");
 const sortBtn = document.getElementById("sort");
 const calculateWealthBtn = document.getElementById("calculate");
 
-getRandomData();
-getRandomData();
-getRandomData();
-
 let data = [];
 
 // fetch data from fake API
@@ -27,6 +23,15 @@ async function getRandomData(){
     addData(newUser);
 }
 
+// add new object to data 
+ 
+function addData(obj) {
+    data.push(obj);
+
+    updatedDOM();
+}
+
+
 // double Money .map Method
 
 function doubleMoney(){
@@ -37,7 +42,7 @@ function doubleMoney(){
     updatedDOM();
 }
 
-// showmillionaires filter Method
+// showmillionaires filter Method    
 
 function showMillioanires(){
     data = data.filter((user)=> user.money > 1000000);
@@ -53,13 +58,6 @@ function sortByRichest(){
     updatedDOM();
 }
 
-// add new object to data 
- 
-function addData(obj) {
-    data.push(obj);
-
-    updatedDOM();
-}
 
 // Calculate Wealth Reduce Method
 
@@ -75,8 +73,7 @@ function calculateWealth(){
 
 function updatedDOM(provideData = data){
     main.innerHTML='<h2><strong>Person</strong> Wealth</h2>';
-
-
+    
     provideData.forEach((item)=>{
         const element = document.createElement('div');
         element.classList.add('person');
